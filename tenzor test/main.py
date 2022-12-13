@@ -30,6 +30,8 @@ def test_images():
     except:
         print("не кликается")
 
+    """ИЗМЕНИТЬ ДОБАВИТЬ НОРМ КЛИК ПО ССЫЛКЕ"""
+    driver.get("https://yandex.ru/images/?utm_source=main_stripe_big")
 
 
     """Проверка верности ссылки"""
@@ -52,7 +54,22 @@ def test_images():
     else:
         print("название категории неверно отображается в строке поиска")
 
-    #get_attribute('value').encode('utf-8')
+    first_img = driver.find_element("class name", "serp-item")
+    first_img.find_element("xpath",".//a").click()
+
+    time.sleep(2)
+    prev_img_src = driver.find_element("class name", "MMImage-Origin").get_attribute("src")
+
+    driver.find_element("class name", "CircleButton_type_next").click()
+    time.sleep(2)
+    if (driver.find_element("class name", "MMImage-Origin").get_attribute("src") != prev_img_src):
+        print("при нажатии вперед картинка сменилась")
+    else:
+        print("картинка не сменилась")
+
+    driver.find_element("class name", "CircleButton_type_prev").click()
+    time.sleep(2)
+    print(driver.find_element("class name", "MMImage-Origin").get_attribute("src") == prev_img_src)
 
 
     driver.quit()
