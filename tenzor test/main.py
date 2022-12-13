@@ -23,11 +23,14 @@ def test_images():
     try:
         iframe = driver.find_element("css selector", 'iframe')
         driver.switch_to.frame(iframe)
-        e=find_element(By.XPATH, "//a[@href='https://yandex.ru/images/?utm_source=main_stripe_big']")
+        e = find_element(By.XPATH, "//a[@href='https://market.yandex.ru/?clid=505&utm_source=main_stripe_big&wprid=1670930605407763-13955599325398295785-vla1-4643-vla-l7-balancer-8080-BAL-5384&src_pof=505&icookie=rG3DxCbp9FOeFBsRSdAayNnNsOia2lHdeNYfKm9Z9KUTV293aC8Lg%2BSJHEVDmUPG3rCwmLS6BGNdxrEgHzyaq47rsjo%3D&utm_source_service=morda']")
+        #e=find_element(By.XPATH, "//a[@href='https://yandex.ru/images/?utm_source=main_stripe_big']/span[@class='desktop-services__text']")
         print("ссылка на картинки на месте")
         e.click()
     except:
-        print("нет ссылки на картинки")
+        print("не кликается")
+
+
 
     """Проверка верности ссылки"""
     if driver.current_url.find(url) != (-1):
@@ -35,6 +38,21 @@ def test_images():
     else:
         print("не та ссылка")
         driver.quit()
+
+    category = driver.find_element("class name", "PopularRequestList-Item_pos_0")
+    link = category.find_element("xpath", ".//a")
+    name_category = link.text
+    link.click()
+    time.sleep(2)
+
+    """Проверка, что название категории отображается в поле поиска"""
+    text_ = driver.find_element("name", "text")
+    if text_.get_attribute('value') == name_category:
+        print("название категории верно отображается в строке поиска")
+    else:
+        print("название категории неверно отображается в строке поиска")
+
+    #get_attribute('value').encode('utf-8')
 
 
     driver.quit()
@@ -105,5 +123,5 @@ def test_text():
 
 
 
-test_text ()
+#test_text ()
 test_images()
