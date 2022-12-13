@@ -12,9 +12,9 @@ driver = webdriver.Firefox()
 driver.get("https://yandex.ru/")
 
 # Get all the elements available with tag name 'p'
-
-elements = driver.find_elements(By.TAG_NAME, 'a')
 iframe = driver.find_element("css selector", 'iframe')
-    driver.switch_to.frame(iframe)
+driver.switch_to.frame(iframe)
+elements = driver.find_elements(By.TAG_NAME, 'a')
+
 for e in elements:
     print(e.text)
