@@ -11,6 +11,9 @@ BROWSER = "explorer" #можно заменить на explorer, firefox
 url="https://yandex.ru/images"
 
 def test_images():
+    print(" \n Старт второго теста \n ")
+    
+    
     driver = webdriver.Chrome()
     driver.get("https://yandex.ru/")
 
@@ -81,6 +84,7 @@ def test_images():
 
 
 def test_text():
+    print(" \n Старт первого теста \n ")
 
     driver = webdriver.Chrome()
     driver.get("https://ya.ru/")
