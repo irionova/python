@@ -74,22 +74,6 @@ def test_images():
 
     driver.quit()
 
-"""
-    try:
-        text = driver.find_element("class name", "dzen-search-arrow-common")
-        text.click()
-        time.sleep(2)
-        print("поле ввода на месте")
-
-        images_elem = driver.find_element(By.XPATH, "/html/body/form/div/div/div/div/ul/")
-
-        #images_elem = driver.find_elements("class name", "desktop-services_js_inited")
-        print(images_elem[0])
-        #images = driver.find_element("xpath", "//a[@href='https://yandex.ru/images/?utm_source=main_stripe_big/']")
-    except:
-        print("отсутствует поле ввода")
-"""
-
 
 
 
@@ -140,5 +124,5 @@ def test_text():
 
 
 
-#test_text ()
+test_text()
 test_images()
